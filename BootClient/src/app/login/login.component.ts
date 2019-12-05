@@ -27,16 +27,15 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-
     // //data is either CREATED or NOT_FOUND
     // this.httpClient.post(this.url, this.loginForm.value).subscribe(data => console.log(data));
     
     this.httpClient.post(this.url, this.loginForm.value).subscribe(data => {
       if (data == "CREATED") {
-        console.log("yes");
+        console.log("logged in :D!");
         this.router.navigate(["/home"]);
       } else {
-        alert("bad credentials");
+        alert("bad credentials :(");
       }
     }
     
