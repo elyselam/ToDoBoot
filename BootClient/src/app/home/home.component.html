@@ -1,1 +1,13 @@
-<p>home works!</p>
+
+
+<!-- input to add toDo -->
+<app-add-to-do></app-add-to-do>
+
+<!-- displays all todos -->
+<hr>
+<button>items</button>
+<li *ngFor="let item of todos"><span><strong>{{item.title}}:</strong></span>{{item.description}}</li>
+
+<!-- Completed
+completed todos are moved to the bottom -->
+

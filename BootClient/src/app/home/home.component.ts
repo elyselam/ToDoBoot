@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { TodosService } from '../todos.service';
+import { ToDo } from '../todo.model';
+
 
 @Component({
   selector: 'app-home',
@@ -7,9 +11,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  todos: ToDo[];
+  constructor(private toDosService: TodosService) { }
 
   ngOnInit() {
+    this.getAll();
+
+    
   }
+
+
+  getAll() {
+    this.toDosService.getAll().subscribe(items => {
+      console.log(items);
+      this.todos = items;
+    })
+  }
+
+
+
 
 }

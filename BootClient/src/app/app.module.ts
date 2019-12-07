@@ -8,6 +8,9 @@ import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
+import { AddToDoComponent } from './add-to-do/add-to-do.component';
+import { DisplayAllComponent } from './display-all/display-all.component';
+import { CompletedComponent } from './completed/completed.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +18,9 @@ import { HomeComponent } from './home/home.component';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
+    AddToDoComponent,
+    DisplayAllComponent,
+    CompletedComponent,
 
 
   ],
