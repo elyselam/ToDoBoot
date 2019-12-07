@@ -11,18 +11,36 @@ description<input type="text" [(ngModel)]="newTodo.description">
 <!-- displays all todos -->
 <hr>
 <button>items</button>
-
+<button (click)="deleteAll()">Delete All</button>
 
 <li *ngFor="let item of todos"> 
-    <button>Completed</button>
-    <button>Update</button>
-    <span><strong>{{item.title}}:</strong></span>{{item.description}}
+    <button (click)="completed(item)">Completed</button>
+    <button (click)="showUpdateForm()">Update</button>
+    <span><strong>{{item.title}}:</strong></span>{{item.description}}, {{item.toDoID}}
+
+    <div>{{item.completed}}</div>
+
+
+    <div *ngIf="isUpdate">
+            <h3> Update ToDo</h3>
+        
+            title<input type="text" [(ngModel)]="item.title">
+            description<input type="text" [(ngModel)]="item.description">
+        
+            <button (click)="updateToDo(item)">Update Item</button>
+        </div> 
 </li>
 
 
 
 
 <hr>
+<!-- form pops up if Update is clicked -->
+
+
+
+
+
 
 
 <!-- Completed

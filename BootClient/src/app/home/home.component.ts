@@ -12,7 +12,10 @@ import { ToDo } from '../todo.model';
 export class HomeComponent implements OnInit {
 
   todos: any
-  newTodo: any = new ToDo("", "");
+  newTodo: any = new ToDo("", "", false);
+
+  isUpdate: boolean;
+  
 
   constructor(private toDosService: TodosService) { }
 
@@ -39,7 +42,27 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  completed(item) {
+    item.completed = true;
+    console.log(this.newTodo)
+    this.toDosService.update(item).subscribe(todo => console.log(todo));
+  }
 
 
+  deleteAll() {
+    this.toDosService.deleteAll().subscribe(); //sends back status code
+    this.getAll();
+  }
+
+  showUpdateForm() {
+    this.isUpdate = true;
+  }
+
+  updateToDo(item){   
+    // title = this.updateToDo;
+    // description = this.updateToDo;
+    // // item.description = "lam";
+    this.toDosService.update(item).subscribe();
+  }
 
 }

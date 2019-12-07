@@ -33,13 +33,19 @@ export class TodosService {
 
   }
   //bc todo already has id
+  //used for 2 methods: setting item to complete & updating title and description
   update(todo) {
-    return this.httpClient.put(this.url + `/${todo.id}`, todo);
+    console.log(todo);
+    return this.httpClient.put(this.url + `/${todo.toDoID}`, todo);
 
   }
 
   delete() {
 
+  }
+
+  deleteAll() {
+    return this.httpClient.delete(this.url);
   }
 
   removeCompleted() {
