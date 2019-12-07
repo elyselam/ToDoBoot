@@ -3,7 +3,7 @@ export class ToDo {
     // description: string;
 
    constructor (
-        public title: string, public description: string
+        public title: string, public description: string, public completed: boolean
 
    ){}
 

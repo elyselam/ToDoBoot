@@ -1,12 +1,29 @@
 
 
 <!-- input to add toDo -->
-<app-add-to-do></app-add-to-do>
+<h2> Add To Do</h2>
+
+title<input type="text" [(ngModel)]="newTodo.title">
+description<input type="text" [(ngModel)]="newTodo.description">
+<button (click)="addToDo()">Add Item</button>
+
 
 <!-- displays all todos -->
 <hr>
 <button>items</button>
-<li *ngFor="let item of todos"><span><strong>{{item.title}}:</strong></span>{{item.description}}</li>
+
+
+<li *ngFor="let item of todos"> 
+    <button>Completed</button>
+    <button>Update</button>
+    <span><strong>{{item.title}}:</strong></span>{{item.description}}
+</li>
+
+
+
+
+<hr>
+
 
 <!-- Completed
 completed todos are moved to the bottom -->
