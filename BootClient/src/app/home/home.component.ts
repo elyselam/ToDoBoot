@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { TodosService } from '../todos.service';
 import { ToDo } from '../todo.model';
+import { not } from '@angular/compiler/src/output/output_ast';
 
 
 @Component({
@@ -15,6 +16,10 @@ export class HomeComponent implements OnInit {
   newTodo: any = new ToDo("", "", false);
 
   isUpdate: boolean;
+  isComplete: boolean;
+
+  notCompleteItems: any = [];
+  completedItems: any = [];
   
 
   constructor(private toDosService: TodosService) { }
@@ -22,6 +27,8 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.getAll();
     // this.toDosService.refreshTodos.subscribe(items=> this.todos = items);
+    this.showCompleted();
+    
     
   }
   addToDo() {
@@ -37,8 +44,15 @@ export class HomeComponent implements OnInit {
 
   getAll() {
     this.toDosService.getAll().subscribe(items => {
-      console.log(items);
-      this.todos = items;
+      // console.log(items);
+      // this.todos = items;
+
+      for(let i in items) {
+        if (!items[i].completed) {
+          this.notCompleteItems.push(items[i]);
+        }
+      }
+      this.todos = this.notCompleteItems;
     })
   }
 
@@ -46,6 +60,9 @@ export class HomeComponent implements OnInit {
     item.completed = true;
     console.log(this.newTodo)
     this.toDosService.update(item).subscribe(todo => console.log(todo));
+    //delete and moved to the Completed component 
+
+
   }
 
 
@@ -63,6 +80,26 @@ export class HomeComponent implements OnInit {
     // description = this.updateToDo;
     // // item.description = "lam";
     this.toDosService.update(item).subscribe();
+  }
+
+
+  showCompleted() {
+    
+    this.toDosService.getAll().subscribe(item => {
+
+      //console.log(item);
+      for (let i in item) {
+
+        console.log(i);
+        console.log(item[i]);
+          if (item[i].completed) {
+            this.completedItems.push(item[i]);
+
+          }
+      }
+      console.log(this.completedItems);
+       })
+      
   }
 
 }

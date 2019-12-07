@@ -48,12 +48,12 @@ export class TodosService {
     return this.httpClient.delete(this.url);
   }
 
+  //removes completed item down to "completed" section
   removeCompleted() {
 
-  }
-
-  createCompleted() {
 
   }
+
+  
 
 }
