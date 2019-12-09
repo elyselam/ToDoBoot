@@ -33,7 +33,7 @@ export class AddToDoComponent implements OnInit {
     //call post request method defined in service
     // subscribe to this response coming from Spring, returning each ToDo
     this.toDoService.create(this.newTodo).subscribe(item => {
-      this.toDoService.refreshTodos.next(item);
+
         return item; //returning a ToDo item in Spring RequestBody
       })
     

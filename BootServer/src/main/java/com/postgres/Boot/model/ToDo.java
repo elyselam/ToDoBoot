@@ -1,5 +1,7 @@
 package com.postgres.Boot.model;
 
+import org.springframework.lang.Nullable;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -18,6 +20,19 @@ public class ToDo {
 
     @Column(columnDefinition = "text")
     private String description;
+
+	@Nullable
+    @Column(columnDefinition = "text")
+	private Boolean completed;
+
+	@Nullable
+	public Boolean getCompleted() {
+		return completed;
+	}
+
+	public void setCompleted(@Nullable Boolean completed) {
+		this.completed = completed;
+	}
 
 	public Long getToDoID() {
 		return toDoID;

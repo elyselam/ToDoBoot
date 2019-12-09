@@ -36,10 +36,10 @@ export class HomeComponent implements OnInit {
     //call post request method defined in service
     // subscribe to this response coming from Spring, returning each ToDo
     this.toDosService.create(this.newTodo).subscribe(item => {
-
+       //refreshes new todos to list 
       this.getAll();  
-        return item; //returning a ToDo item in Spring RequestBody
-      })  
+      return item; //returning a ToDo item in Spring RequestBody
+    })  
   }
 
   getAll() {
@@ -61,14 +61,12 @@ export class HomeComponent implements OnInit {
     console.log(this.newTodo)
     this.toDosService.update(item).subscribe(todo => console.log(todo));
     //delete and moved to the Completed component 
-
-
   }
 
 
   deleteAll() {
     this.toDosService.deleteAll().subscribe(); //sends back status code
-    this.getAll();
+    this.getAll(); 
   }
 
   showUpdateForm() {
